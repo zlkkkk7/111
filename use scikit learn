@@ -1,0 +1,22 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import SGDRegressor # includes gradient descent 
+from sklearn.preprocessing import StandardScaler
+from lab_utils_multi import  load_house_data
+from lab_utils_common import dlc
+np.set_printoptions(precision=2)
+plt.style.use('./deeplearning.mplstyle')
+
+# Load the data set
+X_train, y_train = load_house_data()
+X_features = ['size(sqft)','bedrooms','floors','age']
+X_train, y_train = load_house_data()
+X_features = ['size(sqft)','bedrooms','floors','age']
+
+# Scale/normalize the training data
+scaler = StandardScaler()
+X_norm = scaler.fit_transform(X_train)
+print(f"Peak to Peak range by column in Raw        X:{np.ptp(X_train,axis=0)}")   
+print(f"Peak to Peak range by column in Normalized X:{np.ptp(X_norm,axis=0)}")
+# Peak to Peak range by column in Raw        X:[2.41e+03 4.00e+00 1.00e+00 9.50e+01]
+# Peak to Peak range by column in Normalized X:[5.85 6.14 2.06 3.69]
